@@ -3,7 +3,7 @@ const router = require("express").Router();
 const routes = [
   {
     path: "/auth",
-    route: require("./Authroute"),
+    route: require("./Auth.route"),
   },
 ];
 
