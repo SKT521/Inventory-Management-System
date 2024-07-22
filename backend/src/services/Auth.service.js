@@ -1,4 +1,4 @@
-const { UserModel } = require("../models");
+const { UserModel } = require("../models/user.models");
 
 class AuthService {
   static async RegisterUser(body) {
@@ -21,6 +21,7 @@ class AuthService {
   }
   static async RegisterUser(body) {
     const { email, password, name } = body;
+
     const checkExist = await UserModel.findOne({ email });
     if (checkExist) {
       throw new ApiError(httpStatus.BAD_REQUEST, "User Already Registered");
@@ -29,6 +30,7 @@ class AuthService {
 
     if (password !== checkExist.password) {
       throw new ApiError(httpStatus.BAD_REQUEST, "Invalid Credentials");
+      return;
     }
 
     const user = await UserModel.create({

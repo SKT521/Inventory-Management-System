@@ -14,7 +14,7 @@ class AuthValidation {
       .withMessage("password is required"),
   ];
 
-  static RegisterUser = [
+  static LoginUser = [
     body("email")
       .isEmail()
       .withMessage("email must be valid")

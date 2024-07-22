@@ -1,4 +1,5 @@
 const AuthController = require("../controllers/Auth.controller");
+const Authentication = require("../middlewares/Authentication");
 const Validation = require("../middlewares/Validation");
 const AuthValidation = require("../validations/Auth.validation");
 
@@ -16,5 +17,6 @@ router.post(
   Validation,
   AuthController.LoginUser
 );
+router.post("/profile", Authentication, AuthController, ProfileController);
 
 module.exports = router;
