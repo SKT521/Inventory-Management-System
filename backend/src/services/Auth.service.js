@@ -43,6 +43,19 @@ class AuthService {
       user: user._id,
     });
   }
+
+  static async ProfileService(body) {
+    const checkExist = await UserModel.findById(user).select("name email");
+    if (!checkExist) {
+      throw new ApiError(httpStatus.BAD_REQUEST, "User Not Registered");
+      return;
+    }
+
+    return {
+      msg: "Data fetched",
+      user: checkExist,
+    };
+  }
 }
 
 module.exports = AuthService;

@@ -11,6 +11,10 @@ class AuthController {
     const res_obj = await AuthService.LoginUser(req.body);
     res.status(httpStatus.OK).send(res_obj);
   });
+  static ProfileCOntroller = CatchAsync(async (req, res) => {
+    const res_obj = await AuthService.ProfileController(req.user);
+    res.status(httpStatus.OK).send(res_obj);
+  });
 }
 
 module.exports = AuthController;
